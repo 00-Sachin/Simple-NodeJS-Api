@@ -13,19 +13,19 @@ on:
     outputs:
       test_result:
         description: "Status of the build and test"
-        value: ${{ jobs.build-test.outputs.status }}
+        value: ${{ jobs.build_test.outputs.status }}
 
 jobs:
-  build-test:
-    runs-on: ubuntu:latest
+  build_test:
+    runs-on: ubuntu-latest
     outputs:
-      status: ${{ jobs.status }}
+      status: ${{ job.status }}
     steps:
      - name: chechkout the code 
        uses: actions/checkout@v4
 
      - name: Setup Node.js
-       uses: action/setup-node@v4
+       uses: actions/setup-node@v4
        with:
         node-version: ${{ inputs.node_version }}
         cache: 'npm'
