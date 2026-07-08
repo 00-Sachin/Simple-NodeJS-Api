@@ -1,0 +1,28 @@
+name: Main Branch Pipeline
+on:
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    uses: ./.github/workflows/reusable-build-test.yml
+    with:
+      run_tests: true
+  
+  docker:
+    needs: test
+    uses: ./.github/workflows/reusable-docker.yml
+    with:
+      image_name: ${{ secrets.DOCKER_USERNAME }}/devops-practice-api
+      tag: sha-${{ github.sha }}
+    secrets:
+      docker_username: ${{ secrets.DOCKERHUB_USERNAME }}
+      docker_token: ${{ secrets.DOCKERHUB_TOKEN }}
+
+  deploy:
+    needs: docker
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Mock Deployment
+        run: echo "Deploying image ${{ needs.docker.outputs.image_url }} to production"
