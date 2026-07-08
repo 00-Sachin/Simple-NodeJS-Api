@@ -1,0 +1,19 @@
+name: PR Pipe-line
+on: 
+  pull_request:
+   branches: 
+    - main
+   
+   types: [opend, synchronize]
+  
+jobs:
+  call-build-test:
+   uses: ./.github/workflows/reusable-build-test.yml
+   with:
+      run_tests: true
+  pr-commet:
+    needs: call-build-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Success Message
+        run: echo "PR checks passed for branch: ${{ github.head_ref }}"
