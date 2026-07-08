@@ -16,8 +16,8 @@ jobs:
       image_name: devops-practice-api
       tag: sha-${{ github.sha }}
     secrets:
-      docker_username: ${{ secrets.DOCKER_USERNAME || secrets.DOCKERHUB_USERNAME }}
-      docker_token: ${{ secrets.DOCKER_TOKEN || secrets.DOCKERHUB_TOKEN }}
+      docker_username: ${{ secrets.DOCKER_USERNAME }}
+      docker_token: ${{ secrets.DOCKER_TOKEN }}
 
   deploy:
     needs: docker
