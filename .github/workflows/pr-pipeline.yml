@@ -1,17 +1,19 @@
 name: PR Pipe-line
-on: 
+'on':
   pull_request:
-   branches: 
-    - main
-   
-   types: [opend, synchronize]
-  
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+
 jobs:
   call-build-test:
-   uses: ./.github/workflows/reusable-build-test.yml
-   with:
+    uses: ./.github/workflows/reusable-build-test.yml
+    with:
       run_tests: true
-  pr-commet:
+
+  pr-comment:
     needs: call-build-test
     runs-on: ubuntu-latest
     steps:
