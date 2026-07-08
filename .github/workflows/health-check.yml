@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Pull Latest Docker Image
-        run: docker pull ${{ secrets.DOCKER_USERNAME }}/devops-practice-api:latest
+        run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/devops-practice-api:latest
 
       - name: Run Container
-        run: docker run -d -p 3000:3000 --name test-api ${{ secrets.DOCKER_USERNAME }}/devops-practice-api:latest
+        run: docker run -d -p 3000:3000 --name test-api ${{ secrets.DOCKERHUB_USERNAME }}/devops-practice-api:latest
 
       - name: Wait for startup
         run: sleep 5
@@ -23,7 +23,7 @@ jobs:
           if [ $STATUS -eq 200 ]; then
             echo "Health check passed!"
             echo "## Health Check Report" >> $GITHUB_STEP_SUMMARY
-            echo "- Image: ${{ secrets.DOCKER_USERNAME }}/devops-practice-api:latest" >> $GITHUB_STEP_SUMMARY
+            echo "- Image: ${{ secrets.DOCKERHUB_USERNAME }}/devops-practice-api:latest" >> $GITHUB_STEP_SUMMARY
             echo "- Status: PASSED ✅" >> $GITHUB_STEP_SUMMARY
             echo "- Time: $(date)" >> $GITHUB_STEP_SUMMARY
           else
