@@ -1,5 +1,8 @@
 name: PR Pipe-line
 on:
+  permissions:
+    contents: read
+  
   pull_request:
     branches:
       - main
