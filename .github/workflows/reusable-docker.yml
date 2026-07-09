@@ -19,6 +19,9 @@ on:
       image_url:
         description: "Pushed Docker Image URL"
         value: ${{ inputs.image_name }}:${{ inputs.tag }}
+# TASK 4: Restricting global permissions to read-only for repository contents
+permissions:
+  contents: read
 
 jobs:
   docker-build-push:
