@@ -1,6 +1,5 @@
 ![Main Pipeline](https://github.com/00-Sachin/Simple-NodeJS-Api/actions/workflows/main-pipeline.yml/badge.svg)
-![PR Pipeline](https://github.com/00-Sachin/Simple-NodeJS-Api/actions/workflows/pr-pipeline.yml/badge.svg)
- 
+[![PR Pipe-line](https://github.com/00-Sachin/Simple-NodeJS-Api/actions/workflows/pr-pipeline.yml/badge.svg?branch=feature)](https://github.com/00-Sachin/Simple-NodeJS-Api/actions/workflows/pr-pipeline.yml) 
 # DevOps Practice API
 A Node.js Express application with a full CI/CD pipeline using GitHub Actions.
 
