@@ -32,7 +32,7 @@ jobs:
           severity: 'CRITICAL,HIGH'
 
   deploy:
-    needs: docker
+    needs: vulnerabilityTEST
     runs-on: ubuntu-latest
     environment: production
     steps:
