@@ -1,5 +1,9 @@
 name: Reusable_docker_file
+
+permissions:
+  contents: read
 on:
+
   workflow_call:
     inputs:
       image_name:
