@@ -1,5 +1,5 @@
 # starts with a lightweight image
-FROM node:20-alpine
+FROM node:22-alpine
 
 # this is the working directory inside the docker container
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install the dependencies from package,json
-RUN npm ci 
+RUN npm ci --omit=dev && npm cache clean --force
 
 # copy the rest of the file 
 COPY . .
